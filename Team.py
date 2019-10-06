@@ -4,3 +4,6 @@ class Team:
         self.name = name
         self.tournament = tournament
         self.rating = rating
+
+    def getName(self):
+        return self.name
