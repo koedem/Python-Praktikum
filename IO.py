@@ -1,19 +1,22 @@
 import pickle
+import glob
 
 
 class IO:
 
-    def __init__(self, dataManagement):
-        self.dataManagement = dataManagement
-        self.path = 'tournaments.ser'
+    def __init__(self):
+        self.fileExtension = '.tour'
 
-    def writeToFile(self, tournament):
-        binaryFile = open(tournament.getIdentifier() + self.path, mode='wb')
+    def listAllTournaments(self):
+        return glob.glob("./*" + self.fileExtension)
+
+    def storeTournament(self, tournament):
+        binaryFile = open(tournament.getIdentifier() + self.fileExtension, mode='wb')
         pickle.dump(tournament, binaryFile)
         binaryFile.close()
 
-    def loadFromFile(self, path):
-        binaryFile = open(path + self.path, mode='rb')
+    def loadTournament(self, name):
+        binaryFile = open(name + self.fileExtension, mode='rb')
         tournaments = pickle.load(binaryFile)
         binaryFile.close()
         return tournaments
