@@ -10,16 +10,14 @@ import TournamentPhase as Phase
 class Main:
 
     data = DM.DataManagement()
-    data.addTournament(123)
-    print(data.tournaments)
+    data.createTournament(123)
+    print(data.tournament)
     tournament = TN.Tournament(1)
     official = Off.Official("Max Mustermann", [1, 2, 3])
     print(type(official.team))
     match = Match.Match(Team.Team("Flying Foxes", tournament), Team.Team("Mighty Ducks", tournament))
     # match.setResult(120,80)
     print(match.getResult())
-    for tn in data.getAllTournaments():
-        print(tn.getIdentifier())
 
     example = TN.Tournament("Example tournament")
     foxes = Team.Team("Flying Foxes", example, rating=2100)
@@ -35,7 +33,8 @@ class Main:
     print(example.getCurrentPhase().getMatches()[0].getResult())
     data.storeTournament(example)
 
-    tn = data.loadTournament("Example tournament")
+    data.loadTournament("Example tournament")
+    tn = data.getTournament()
     print("Serialized")
     print(tn.getIdentifier())
     print(tn.getCurrentPhase())
