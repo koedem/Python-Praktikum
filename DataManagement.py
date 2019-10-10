@@ -1,5 +1,6 @@
 import Tournament as TN
 
+
 class DataManagement:
 
     def __init__(self):

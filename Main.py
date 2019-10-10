@@ -1,9 +1,11 @@
 import DataManagement as DM
+import IO
 import Tournament as TN
 import Official as Off
 import Match
 import Team
 import TournamentPhase as Phase
+
 
 class Main:
 
@@ -29,5 +31,13 @@ class Main:
     example.getCurrentPhase().addMatch(match)
     example.getCurrentPhase().schedule()
     print(example.getCurrentPhase().getMatches()[0].getResult())
-    match2.setResult(150, 100)
-    print(example.getCurrentPhase().getMatches()[0].getResult()) # TODO why isn't this 150-100 ? Check immutability stuff etc
+    match2.setResult((150, 100))
+    print(example.getCurrentPhase().getMatches()[0].getResult())
+    io = IO.IO(data)
+    io.writeToFile(example)
+
+    tn = io.loadFromFile("Example tournament")
+    print("Serialized")
+    print(tn.getIdentifier())
+    print(tn.getCurrentPhase())
+    print(example.getCurrentPhase())

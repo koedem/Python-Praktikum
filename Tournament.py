@@ -1,5 +1,6 @@
 import TournamentPhase as Phase
 
+
 class Tournament:
 
     def __init__(self, identifier, numberOfLocations = 1, officialPositions = None):
