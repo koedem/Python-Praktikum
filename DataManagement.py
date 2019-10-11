@@ -1,4 +1,5 @@
 import IO
+import Team
 import Tournament as TN
 
 
@@ -35,6 +36,18 @@ class DataManagement:
         """
         return self.tournament
 
+    def getPhases(self):
+        """
+        :return: all phases of the currently opened tournament.
+        """
+        return self.tournament.getAllPhases()
+
+    def getCurrentPhase(self):
+        """
+        :return: the current i.e. last phase of the currently opened tournament.
+        """
+        return self.tournament.getCurrentPhase()
+
     def createTournament(self, identifier):
         """
         Creates a tournament and replaces the current touranment with it. Make sure to store the old tournament before
@@ -42,3 +55,11 @@ class DataManagement:
         :param identifier: The name of the tournament, this will also become its file name.
         """
         self.tournament = TN.Tournament(identifier)
+
+    def createTeam(self, name, rating = 0):
+        """
+        Create a team and add it to the currently opened tournament
+        :param name: the name of the team.
+        :param rating: a rating of the team's playing strength.
+        """
+        self.tournament.addTeam(Team.Team(name, rating))

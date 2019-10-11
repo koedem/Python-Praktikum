@@ -25,3 +25,6 @@ class Tournament:
 
     def getCurrentPhase(self):
         return self.phases[-1]
+
+    def getAllPhases(self):
+        return self.phases
