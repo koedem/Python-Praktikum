@@ -1,8 +1,9 @@
 class Match:
 
-    def __init__(self, teamOne, teamTwo, priority = 0, score=(0,0), location = None, time = None):
+    def __init__(self, teamOne, teamTwo, officialPositions, priority = 0, score=(0,0), location = None, time = None):
         self.teamOne = teamOne
         self.teamTwo = teamTwo
+        self.officials = [(pos, "") for pos in officialPositions]
         self.priority = priority
         self.score = score
         self.locTime = (location, time) # initialize with None in case locTime gets requested before the match got scheduled
@@ -28,3 +29,7 @@ class Match:
 
     def getTeams(self):
         return (self.teamOne, self.teamTwo)
+
+    def print(self):
+        print(self.teamOne.getName() + " (" + str(self.score[0]) + ") vs (" + str(self.score[1]) + ") "
+              + self.teamTwo.getName() + ". Pitch: " + str(self.locTime[0]) + ", slot: " + str(self.locTime[1]))

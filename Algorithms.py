@@ -5,5 +5,5 @@ class Algorithms:
         self.scheduling = scheduling
 
     def schedule(self, phase): # TODO should probably have a parameter, which MM system to use
-        phase = self.matchMaking.makeMatches(phase)
+        "phase = self.matchMaking.makeMatches(phase)"
         return self.scheduling.schedule(phase)

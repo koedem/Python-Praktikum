@@ -17,6 +17,6 @@ class IO:
 
     def loadTournament(self, name):
         binaryFile = open(name + self.fileExtension, mode='rb')
-        tournaments = pickle.load(binaryFile)
+        tournament = pickle.load(binaryFile)
         binaryFile.close()
-        return tournaments
+        return tournament

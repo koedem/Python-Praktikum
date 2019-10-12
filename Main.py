@@ -1,5 +1,7 @@
+import Algorithms
 import DataManagement as DM
 import IO
+import Scheduling
 import Tournament as TN
 import Official as Off
 import Match
@@ -9,6 +11,7 @@ import TournamentPhase as Phase
 
 class Main:
 
+    print(1,2)
     data = DM.DataManagement()
     data.createTournament(123)
     print(data.tournament)
@@ -27,11 +30,18 @@ class Main:
     example.addPhase("Swiss System", 7)
     match2 = Match.Match(foxes, ducks)
     example.getCurrentPhase().addMatch(match)
-    example.getCurrentPhase().schedule()
+    example.getCurrentPhase().addMatch(match2)
+    for mat in example.getCurrentPhase().matches:
+        mat.print()
+    algo = Algorithms.Algorithms(None, Scheduling.Scheduling())
+    algo.schedule(example.getCurrentPhase())
     print(example.getCurrentPhase().getMatches()[0].getResult())
     match2.setResult((150, 100))
     print(example.getCurrentPhase().getMatches()[0].getResult())
     data.storeTournament(example)
+
+    for mat in example.getCurrentPhase().matches:
+        mat.print()
 
     data.loadTournament("Example tournament")
     tn = data.getTournament()
